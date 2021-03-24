@@ -7,14 +7,14 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], extensions: [], userRemoteConfigs: [[credentialsId: 'root', url: 'git@github.com:cpleecn/hello-world.git']]])
             }
         }
-        // stage('build project') {
-        //     steps {
-        //         sh 'mvn clean package'
-        //     }
-        // }
+        stage('build project') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
         stage('publish project') {
             steps {
-                // deploy adapters: [tomcat8(credentialsId: '5a61616c-27eb-4157-9d3a-48a716931611', path: '', url: 'http://47.119.130.204:8080/')], contextPath: null, war: 'target/*.war'
+                deploy adapters: [tomcat8(credentialsId: '5a61616c-27eb-4157-9d3a-48a716931611', path: '', url: 'http://47.119.130.204:8080/')], contextPath: null, war: 'target/*.war'
             }
         }
     }
