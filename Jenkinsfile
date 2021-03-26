@@ -7,7 +7,6 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/${branch}']], extensions: [], userRemoteConfigs: [[credentialsId: 'root', url: 'git@github.com:cpleecn/hello-world.git']]])
             }
         }
-       
     }
 
     post {
