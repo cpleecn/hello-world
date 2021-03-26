@@ -9,7 +9,7 @@ pipeline {
         }
         stage('publish code') {
             steps {
-                cp /var/lib/jenkins/workspace/pipeline_project/* /usr/share/nginx/html
+                cp -r /var/lib/jenkins/workspace/pipeline_project/* /usr/share/nginx/html/
             }
         }
     }
